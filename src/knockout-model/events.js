@@ -1,12 +1,12 @@
-ku.Events = function() {
+knockOutModel.Events = function() {
     this.events = {};
     return this;
 };
 
-ku.Events.prototype = {
+knockOutModel.Events.prototype = {
     on: function(name, handler) {
         if (typeof this.events[name] === 'undefined') {
-            this.events[name] = new ku.Event();
+            this.events[name] = new knockOutModel.Event();
         }
 
         this.events[name].bind(handler);

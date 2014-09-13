@@ -1,4 +1,4 @@
-ku.collection = function(model) {
+knockOutModel.collection = function(model) {
     var Collection = function(data) {
         Array.prototype.push.apply(this, []);
 
@@ -49,7 +49,7 @@ ku.collection = function(model) {
             if (this.has(at)) {
                 Array.prototype.splice.call(this, at, 1);
 
-                this.observer.notifySubscribers(this);
+                this.observer.notifySubscribers();
             }
 
             return this;
@@ -57,7 +57,7 @@ ku.collection = function(model) {
 
         this.empty = function() {
             Array.prototype.splice.call(this, 0, this.length);
-            this.observer.notifySubscribers(this);
+            this.observer.notifySubscribers();
 
             return this;
         };
@@ -71,21 +71,21 @@ ku.collection = function(model) {
         };
 
         this.insert = function(at, item) {
-            item         = ku.isModel(item) ? item : new model(item);
+            item         = knockOutModel.isModel(item) ? item : new model(item);
             item.$parent = this.$parent;
 
             Array.prototype.splice.call(this, at, 0, item);
-            this.observer.notifySubscribers(this);
+            this.observer.notifySubscribers();
 
             return this;
         };
 
         this.replace = function (at, item) {
-            item         = ku.isModel(item) ? item : new model(item);
+            item         = knockOutModel.isModel(item) ? item : new model(item);
             item.$parent = this.$parent;
 
             Array.prototype.splice.call(this, at, 1, item);
-            this.observer.notifySubscribers(this);
+            this.observer.notifySubscribers();
 
             return this;
         };
@@ -106,7 +106,7 @@ ku.collection = function(model) {
         this.from = function(data) {
             var that = this;
 
-            if (ku.isCollection(data)) {
+            if (knockOutModel.isCollection(data)) {
                 data = data.raw();
             }
 
@@ -142,7 +142,7 @@ ku.collection = function(model) {
             var collection     = new this.$self.Model.Collection();
             collection.$parent = this.$parent;
 
-            if (ku.isModel(query)) {
+            if (knockOutModel.isModel(query)) {
                 query = query.raw();
             }
 

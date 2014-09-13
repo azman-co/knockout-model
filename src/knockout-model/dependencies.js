@@ -1,20 +1,20 @@
 var globals = {};
 
-ku.set = function(name, value) {
+knockOutModel.set = function(name, value) {
     globals[name] = value;
 
     return this;
 };
 
-ku.get = function(name) {
+knockOutModel.get = function(name) {
     return this.has(name) ? globals[name] : null;
 };
 
-ku.has = function(name) {
+knockOutModel.has = function(name) {
     return typeof globals[name] !== 'undefined';
 };
 
-ku.remove = function(name) {
+knockOutModel.remove = function(name) {
     if (this.has(name)) {
         delete globals[name];
     }
@@ -22,7 +22,7 @@ ku.remove = function(name) {
     return this;
 };
 
-ku.reset = function() {
+knockOutModel.reset = function() {
     globals = {};
     return this;
 };

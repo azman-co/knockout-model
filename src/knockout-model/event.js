@@ -1,9 +1,9 @@
-ku.Event = function() {
+knockOutModel.Event = function() {
     this.stack = [];
     return this;
 };
 
-ku.Event.prototype = {
+knockOutModel.Event.prototype = {
     bind: function(cb) {
         this.stack.push(cb);
         return this;

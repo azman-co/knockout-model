@@ -4,10 +4,10 @@
     } else if (typeof define === 'function' && define.amd) {
         define(['knockout', 'exports'], factory);
     } else {
-        factory(ko, window.ku = {});
+        factory(ko, window.knockOutModel = {});
     }
-}(function(ko, ku) {
-    
+}(function(ko, KnockOutModel) {
+
 if (typeof ko === 'undefined') {
     throw 'KnockoutJS is required. Download at https://github.com/SteveSanderson/knockout.';
 }

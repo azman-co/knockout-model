@@ -1,4 +1,4 @@
-ku.model = function(definition) {
+knockOutModel.model = function(definition) {
     var Model = function(data) {
         var that = this;
 
@@ -8,21 +8,8 @@ ku.model = function(definition) {
             return clone;
         };
 
-        this.relate = function(name, fn) {
-            var oldval;
-
-            if (typeof this.$self.properties[name] !== 'undefined') {
-                oldval = this[name]();
-            }
-
-            this.$self.relations[name] = fn;
-            this[name] = (new fn(oldval)).observer;
-
-            return this;
-        };
-
         this.from = function(obj) {
-            if (ku.isModel(obj)) {
+            if (knockOutModel.isModel(obj)) {
                 var data = obj.raw();
 
                 each(obj.$self.computed, function(name) {
@@ -38,7 +25,7 @@ ku.model = function(definition) {
                 }
             });
 
-            this.observer.notifySubscribers(this);
+            this.observer.notifySubscribers();
 
             return this;
         };
@@ -61,13 +48,17 @@ ku.model = function(definition) {
             return out;
         };
 
+        this.hasSameValue = function() {
+
+        };
+
         this.reset = function() {
             each(that.$self.properties, function(i, v) {
                 that[i](v);
             });
 
             each(that.$self.relations, function(i, v) {
-                if (ku.isCollection(v)) {
+                if (knockOutModel.isCollection(v)) {
                     that[i]().empty();
                 } else {
                     that[i]().reset();
@@ -89,7 +80,7 @@ ku.model = function(definition) {
         }
     };
 
-    Model.Collection      = ku.collection(Model);
+    Model.Collection      = knockOutModel.collection(Model);
     Model.computed        = {};
     Model.methods         = {};
     Model.properties      = {};
@@ -97,7 +88,7 @@ ku.model = function(definition) {
     Model.prototype.$self = Model;
 
     Model.extend = function(OtherModel) {
-        OtherModel = ku.isModel(OtherModel) ? OtherModel : ku.model(OtherModel);
+        OtherModel = knockOutModel.isModel(OtherModel) ? OtherModel : knockOutModel.model(OtherModel);
 
         each(Model.computed, function(i, v) {
             if (typeof OtherModel.computed[i] === 'undefined') {
@@ -137,7 +128,7 @@ ku.model = function(definition) {
 
 function interpretDefinition(Model, definition) {
     each(definition, function(i, v) {
-        if (ku.isModel(v) || ku.isCollection(v)) {
+        if (knockOutModel.isModel(v) || knockOutModel.isCollection(v)) {
             Model.relations[i] = v;
             return;
         }
@@ -145,11 +136,11 @@ function interpretDefinition(Model, definition) {
         if (typeof v === 'function') {
             var name, type;
 
-            if (ku.isReader(i)) {
-                name = ku.fromReader(i);
+            if (knockOutModel.isReader(i)) {
+                name = knockOutModel.fromReader(i);
                 type = 'read';
-            } else if (ku.isWriter(i)) {
-                name = ku.fromWriter(i);
+            } else if (knockOutModel.isWriter(i)) {
+                name = knockOutModel.fromWriter(i);
                 type = 'write';
             }
 

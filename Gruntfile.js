@@ -10,8 +10,8 @@ module.exports = function(grunt) {
     grunt.initConfig({
         concat: {
             dist: {
-                src: 'src/ku/*.js',
-                dest: 'dist/knockup.js'
+                src: 'src/knockout-model/*.js',
+                dest: 'dist/knockout-model.js'
             }
         },
         connect: {
@@ -24,7 +24,7 @@ module.exports = function(grunt) {
         },
         jshint: {
             files: [
-                'src/ku/*.js',
+                'src/knockout-model/*.js',
                 'tests/*.js'
             ]
         },
@@ -44,15 +44,15 @@ module.exports = function(grunt) {
         uglify: {
             dist: {
                 files: {
-                    'dist/knockup.min.js': [
-                        'dist/knockup.js'
+                    'dist/knockout-model.min.js': [
+                        'dist/knockout-model.js'
                     ]
                 }
             }
         },
         wrap: {
             dest: {
-                file: 'dist/knockup.js',
+                file: 'dist/knockout-model.js',
                 wrapper: 'src/wrapper.js'
             }
         }

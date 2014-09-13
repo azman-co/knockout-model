@@ -1,9 +1,9 @@
 {
-  "name": "knockup",
+  "name": "knockout-model",
   "version": "1.0.0",
-  "main": "src/knockup.js",
+  "main": "src/knockout-model.js",
   "dependencies": {
-    "knockout": "latest",
+    "knockout.js": "latest",
     "qunit": "latest"
   }
 }
