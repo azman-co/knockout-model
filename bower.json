@@ -1,9 +1,16 @@
 {
-  "name": "knockout-model",
-  "version": "1.0.0",
-  "main": "src/knockout-model.js",
-  "dependencies": {
-    "knockout.js": "latest",
-    "qunit": "latest"
-  }
+    "name": "knockout-model",
+    "version": "1.0.0",
+    "main": "dist/knockout-model.min.js",
+    "ignore": [
+        "src",
+        "test",
+        ".travis.yml",
+        "Gruntfile.js",
+        "package.json"
+    ],
+    "dependencies": {
+        "knockout.js": "latest",
+        "qunit": "latest"
+    }
 }

@@ -1,7 +1,7 @@
 {
   "name": "knockout-model",
   "description": "Provides a model library for use with knockout.",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-contrib-concat": "^0.4.0",
