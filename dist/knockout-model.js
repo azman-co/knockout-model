@@ -6,7 +6,7 @@
     } else {
         factory(ko, window.knockOutModel = {});
     }
-}(function(ko, KnockOutModel) {
+}(function(ko, knockOutModel) {
 
 if (typeof ko === 'undefined') {
     throw 'KnockoutJS is required. Download at https://github.com/SteveSanderson/knockout.';
@@ -378,8 +378,6 @@ function generateObserver(obj) {
         owner: obj
     });
 }
-knockOutModel.prefix = 'data-ku-';
-
 knockOutModel.element = document;
 
 knockOutModel.run = function(element) {
@@ -520,7 +518,13 @@ knockOutModel.model = function(definition) {
 
             this.observer.notifySubscribers();
 
+            this.afterPopulate(obj);
+
             return this;
+        };
+
+        this.afterPopulate = function(obj){
+
         };
 
         this.raw = function() {

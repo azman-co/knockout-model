@@ -27,7 +27,13 @@ knockOutModel.model = function(definition) {
 
             this.observer.notifySubscribers();
 
+            this.afterPopulate(obj);
+
             return this;
+        };
+
+        this.afterPopulate = function(obj){
+
         };
 
         this.raw = function() {
