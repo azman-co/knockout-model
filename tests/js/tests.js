@@ -1,23 +1,5 @@
 module('Attribute Bindings');
 
-test('Model', function() {
-    var div = document.createElement('div');
-    div.setAttribute('data-ku-model', 'test.model');
-
-    var span = document.createElement('span');
-    span.setAttribute('data-bind', 'text: name');
-
-    div.appendChild(span);
-
-    knockOutModel.set('test.model', {
-        name: 'test'
-    });
-
-    knockOutModel.run(div);
-
-    ok(div.childNodes[0].innerHTML === 'test', 'Inner text on div\'s child span should update.');
-});
-
 
 module('Models and Collections');
 
@@ -108,30 +90,6 @@ test('Collection Manipulation', function() {
     ok(model.items().length === 2, 'Items should be replaced when directly set.');
 });
 
-test('Observable Arrays', function() {
-    var list  = document.createElement('ul');
-    var item  = document.createElement('li');
-    var model = knockOutModel.model({
-        items: []
-    });
-
-    list.setAttribute('data-ku-model', 'model');
-    list.setAttribute('data-bind', 'foreach: items');
-    item.setAttribute('data-bind', 'text: $data');
-    list.appendChild(item);
-
-    knockOutModel.set('model', new model);
-    knockOutModel.run(list);
-
-    ok(knockOutModel.get('model').items.length === list.childNodes.length, 'No items should be present.');
-
-    knockOutModel.get('model').items([
-        'test1',
-        'test2'
-    ]);
-
-    ok(knockOutModel.get('model').items().length === list.childNodes.length, 'Changes in view model not present.');
-});
 
 test('Computed Observables - Readers and Writers', function() {
     var User = knockOutModel.model({

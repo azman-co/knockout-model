@@ -6,7 +6,7 @@
     } else {
         factory(ko, window.knockOutModel = {});
     }
-}(function(ko, KnockOutModel) {
+}(function(ko, knockOutModel) {
 
 if (typeof ko === 'undefined') {
     throw 'KnockoutJS is required. Download at https://github.com/SteveSanderson/knockout.';

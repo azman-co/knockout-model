@@ -1,5 +1,3 @@
-knockOutModel.prefix = 'data-ku-';
-
 knockOutModel.element = document;
 
 knockOutModel.run = function(element) {
