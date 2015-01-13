@@ -521,11 +521,11 @@ knockOutModel.model = function(definition) {
             if (obj != null) {
                 this.afterPopulate();
             }
-            
+
             return this;
         };
 
-        this.afterPopulate = function(obj){
+        this.afterPopulate = function(){
 
         };
 
