@@ -518,8 +518,10 @@ knockOutModel.model = function(definition) {
 
             this.observer.notifySubscribers();
 
-            this.afterPopulate(obj);
-
+            if (obj != null) {
+                this.afterPopulate();
+            }
+            
             return this;
         };
 
