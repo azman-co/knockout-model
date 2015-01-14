@@ -518,7 +518,7 @@ knockOutModel.model = function(definition) {
 
             this.observer.notifySubscribers();
 
-            if (obj != {}) {
+            if (typeof(obj) != 'undefined' && obj != {}) {
                 this.afterPopulate(obj);
             }
 
