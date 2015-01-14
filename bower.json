@@ -10,7 +10,7 @@
         "package.json"
     ],
     "dependencies": {
-        "knockout.js": "latest",
+        "knockout": "~3.2.0",
         "qunit": "latest"
     }
 }
