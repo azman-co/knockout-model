@@ -27,7 +27,10 @@ knockOutModel.model = function(definition) {
 
             this.observer.notifySubscribers();
 
-            this.afterPopulate(obj);
+            if (obj != {}) {
+                this.afterPopulate(obj);
+            }
+
 
             return this;
         };
